@@ -1,0 +1,32 @@
+clc
+clear;
+close all;
+
+W=randn(1000,2);
+A=rand(2,2);
+X=W*A;
+
+C=cov(X);
+
+
+[V,E] = eig(C);
+
+e=diag(E);
+[emax,emax_ind] = max(diag(E));
+u=V(:,emax_ind);
+
+ 
+Z = X*u;
+
+Y = Z*u';
+
+ 
+var(Z)
+
+
+scatter(X(:,1), X(:,2));
+
+hold on;
+
+scatter(Y(:,1), Y(:,2));
+
